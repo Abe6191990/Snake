@@ -9,9 +9,16 @@ node('appserver_3120_60') {
         app = docker.build('abe6191990/snakegame1')
     }
 
-    stage('SAST SNYK') {
-        echo "Running security analysis with SNYK"
-        // Add SNYK commands here if required
+   stage('SCA-SAST-SNYK-TEST') 
+      {
+       agent 
+       {
+         label 'appserver_3120_60'
+       }
+         snykSecurity(
+            snykInstallation: 'Snyk',
+            snykTokenId: 'Snykid',
+            severity: 'critical' 
     }
 
     stage('Post to DockerHub') {
