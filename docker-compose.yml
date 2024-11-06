@@ -2,7 +2,7 @@ version: '3.3'
 services:
   snake:
     image: 'abe6191990/snakegame1:latest'
-    container_name: snake_app1
+    container_name: snake_app2
     environment:
       - PORT=3000
     ports:
