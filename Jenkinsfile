@@ -13,7 +13,7 @@ node('appserver_3120_60') {
         snykSecurity(
             snykInstallation: 'Snyk',
             snykTokenId: 'Snykid',
-            severity: 'critical'
+            severity: ''
         )
     }
 
