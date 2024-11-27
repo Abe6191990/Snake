@@ -11,7 +11,7 @@ node('appserver_3120_60') {
 
     stage('SonarQube Analysis') {
         script {
-            def scannerHome = tool 'SonarQubeScanner'
+            def scannerHome = tool 'SonarScanner'
             withSonarQubeEnv('sonarqube') {
                 sh "${scannerHome}/bin/sonar-scanner \
                     -Dsonar.projectKey=gameapp1 \
