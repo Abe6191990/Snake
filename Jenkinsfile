@@ -17,6 +17,17 @@ node('appserver_3120_60') {
         )
     }
 
+    stage('SonarQube Analysis') {
+        script {
+            def scannerHome = tool 'SonarQubeScanner'
+            withSonarQubeEnv('sonarqube') {
+                sh "${scannerHome}/bin/sonar-scanner \
+                    -Dsonar.projectKey=gameapp1 \
+                    -Dsonar.sources=."
+            }
+        }
+    }
+
     stage('Post to DockerHub') {
         docker.withRegistry('https://registry.hub.docker.com', 'dockerhub_credentials') {
             app.push('latest')
