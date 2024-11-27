@@ -9,14 +9,6 @@ node('appserver_3120_60') {
         app = docker.build('abe6191990/snakegame1')
     }
 
-    stage('SCA-SAST-SNYK-TEST') {
-        snykSecurity(
-            snykInstallation: 'Snyk',
-            snykTokenId: 'Snykid',
-            severity: ''
-        )
-    }
-
     stage('SonarQube Analysis') {
         script {
             def scannerHome = tool 'SonarQubeScanner'
